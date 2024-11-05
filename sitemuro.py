@@ -1,4 +1,4 @@
-import base64
+# import base64
 from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 import streamlit as st
@@ -16,62 +16,29 @@ contador = contador.dropna(how="all")
 contador += 1
 conn.update(worksheet="cont", data=contador)
 
-# worksheet_name = "cont"
-
-# # Função para ler a contagem atual e incrementá-la
-# def incrementar_contador():
-#     try:
-#         # Ler a contagem atual da célula A1 da aba "cont"
-#         df = conn.read(worksheet=worksheet_name, usecols=[0], ttl=5)  # ttl controla o cache para a leitura
-        
-#         # Verifica se o DataFrame não está vazio
-#         if not df.empty and df.iloc[0, 0] is not None:
-#             contador_atual = int(df.iloc[0, 0])  # Lê o valor atual da contagem
-#         else:
-#             contador_atual = 0  # Inicializa como 0 caso a célula A1 esteja vazia
-#     except Exception as e:
-#         st.error(f"Erro ao ler o contador: {e}")
-#         contador_atual = 0  # Define 0 caso ocorra um erro de leitura
-
-#     # Incrementa a contagem
-#     contador_atualizado = contador_atual + 1
-    
-#     # Atualiza o valor na planilha
-#     try:
-#         conn.update(worksheet=worksheet_name, data=str(contador_atualizado))  # Atualiza na célula A1
-#         st.write(f"Visitas atualizadas para: {contador_atualizado}")
-#     except Exception as e:
-#         st.error(f"Erro ao atualizar contador: {e}")
-
-# Incrementar contador uma vez por sessão do usuário
-# if 'contador_incrementado' not in st.session_state:
-#     incrementar_contador()
-#     st.session_state.contador_incrementado = True
-
-
 #imagem de plano de fundo em bin
-def get_base64_of_bin_file(bin_file):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
+# def get_base64_of_bin_file(bin_file):
+#     with open(bin_file, 'rb') as f:
+#         data = f.read()
+#     return base64.b64encode(data).decode()
 
-# Definindo background com a devida imagem
-bg_image = get_base64_of_bin_file("muronoite.png")
+# # Definindo background com a devida imagem
+# bg_image = get_base64_of_bin_file("muronoite.png")
 
-# Apply CSS styling with the background image
-st.markdown(
-    f"""
-    <style>
-    .stApp {{
-        background-image: url("data:image/jpg;base64,{bg_image}");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+# # Apply CSS styling with the background image
+# st.markdown(
+#     f"""
+#     <style>
+#     .stApp {{
+#         background-image: url("data:image/jpg;base64,{bg_image}");
+#         background-size: cover;
+#         background-repeat: no-repeat;
+#         background-attachment: fixed;
+#     }}
+#     </style>
+#     """,
+#     unsafe_allow_html=True
+# )
 
 # Imagem título
 st.image("nomenomuro.jpg")
