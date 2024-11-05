@@ -1,4 +1,4 @@
-# import base64
+import base64
 from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 import streamlit as st
@@ -17,28 +17,28 @@ contador += 1
 conn.update(worksheet="cont", data=contador)
 
 #imagem de plano de fundo em bin
-# def get_base64_of_bin_file(bin_file):
-#     with open(bin_file, 'rb') as f:
-#         data = f.read()
-#     return base64.b64encode(data).decode()
+def get_base64_of_bin_file(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
 
-# # Definindo background com a devida imagem
-# bg_image = get_base64_of_bin_file("muronoite.png")
+# Definindo background com a devida imagem
+bg_image = get_base64_of_bin_file("muronoite.png")
 
-# # Apply CSS styling with the background image
-# st.markdown(
-#     f"""
-#     <style>
-#     .stApp {{
-#         background-image: url("data:image/jpg;base64,{bg_image}");
-#         background-size: cover;
-#         background-repeat: no-repeat;
-#         background-attachment: fixed;
-#     }}
-#     </style>
-#     """,
-#     unsafe_allow_html=True
-# )
+# Apply CSS styling with the background image
+st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background-image: url("data:image/jpg;base64,{bg_image}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # Imagem título
 st.image("nomenomuro.jpg")
@@ -76,7 +76,7 @@ with form:
     message = st.text_area("Pedido de Oração (máximo de 300 caracteres)", max_chars=300)
 #Botão de enviar
 submit = form.form_submit_button("Faça o PIX com o código abaixo e clique aqui para ENVIAR")
-
+imagem_papel = False
 if submit:
     # Verificação de entrada do usuário antes de salvar
     if name and email:  # Verifica se todos os campos foram preenchidos
@@ -96,7 +96,7 @@ if submit:
         conn.update(worksheet="dados", data=dados_atualizados)
         # Mensagem de sucesso
         st.success("Dados gravados com sucesso! Seu nome será colocado no Muro das Lamentações após confirmação do pagamento e em seguida receberás um e-mail de confirmação.")
-       
+        imagem_papel = True
         # Após enviar os dados, limpar os campos
         st.session_state.pagador = ""
         st.session_state.name = ""
@@ -111,6 +111,5 @@ st.subheader('''Chave PIX:
 # Imagem do QR Code
 st.image("qr.jpg", width=200)
  # Imagem de sucesso
-st.image('papel.jpg')
-
-# st.dataframe(existing_data)
+if imagem_papel == True:
+    st.image('papel.jpg')
