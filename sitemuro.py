@@ -16,29 +16,29 @@ contador = contador.dropna(how="all")
 contador += 1
 conn.update(worksheet="cont", data=contador)
 
-#imagem de plano de fundo em bin
-def get_base64_of_bin_file(bin_file):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
+# #imagem de plano de fundo em bin
+# def get_base64_of_bin_file(bin_file):
+#     with open(bin_file, 'rb') as f:
+#         data = f.read()
+#     return base64.b64encode(data).decode()
 
-# Definindo background com a devida imagem
-bg_image = get_base64_of_bin_file("muronoite.png")
+# # Definindo background com a devida imagem
+# bg_image = get_base64_of_bin_file("muronoite.png")
 
-# Apply CSS styling with the background image
-st.markdown(
-    f"""
-    <style>
-    .stApp {{
-        background-image: url("data:image/jpg;base64,{bg_image}");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+# # Apply CSS styling with the background image
+# st.markdown(
+#     f"""
+#     <style>
+#     .stApp {{
+#         background-image: url("data:image/jpg;base64,{bg_image}");
+#         background-size: cover;
+#         background-repeat: no-repeat;
+#         background-attachment: fixed;
+#     }}
+#     </style>
+#     """,
+#     unsafe_allow_html=True
+# )
 
 # Imagem título
 st.image("nomenomuro.jpg")
