@@ -44,13 +44,17 @@ st.markdown(
 st.image("nomenomuro.jpg")
 st.divider()
 # Imagem promo
-st.image("promo.jpg")
-st.divider()
+# st.image("promo.jpg")
+# st.divider()
 # Frase inicial
 st.header('''Você pode ter seu nome e uma oração colocados no Muro das Lamentaçãos em Jerusalém!''')
 st.divider()
-
+st.header('Como funciona:')
+st.subheader('Você insere seu nome, e-mail e uma oração. Uma equipe do ministério em Jerusalém imprime, coloca no muro e lhe envia um e-mail para informar que sua oração foi colocadan o muro.')
+st.subheader('Por fim, você pode contribuir com o ministério com a quantia que Deus lhe tocar o coração e ajudar a manter esse trabalho lindo de levar a oração das pessoas direto para Jerusalém!')
+st.divider()
 # Texto apresentação
+st.subheader("Mas por quê colocar um bilhete com meu nome no Muro das Lamentações?")
 st.header("Sobre o Muro:")
 '''
 O Muro das Lamentações, também conhecido como Kotel, é um local de extrema importância religiosa para os judeus. Trata-se do único vestígio remanescente do antigo Templo de Herodes, 
@@ -58,14 +62,14 @@ construído no lugar do Templo de Jerusalém original. Localizado no monte do Te
 “Nesse lugar, de acordo com a tradição judaica, todas as orações de todas as pessoas no mundo sobem daqui. Aqui os portões do céu estão abertos a judeus e não judeus, da Terra ou da 
 diáspora, fazem seus pedidos aqui por meio de anotações que eles inseriram entre as (pedras) do Muro das Lamentações”, diz Shmuel Rabinovitch, rabino do Muro das Lamentações e dos locais sagrados de Jerusalém.
 '''
-st.image("oracaonomuro.jpg")
+st.image("oracaonomuro.jpg", width=400)
 st.subheader('Até mesmo pedidos não presenciais chegam ao local, pois as pessoas podem ter sua oração adicionada ao Muro das Lamentações por diversos meios.')
 st.subheader('Se os judeus e os de outras religiões não puderem chegar ao Kotel, eles podem enviar seus pedidos por correio, e-mail ou texto.')
-st.image("bilhetes.jpg")
+st.image("bilhetes.jpg", width=400)
 
 st.subheader("Para ter seu nome colocado no muro das lamentações, insira seu NOME, E-MAIL e um PEDIDO DE ORAÇÃO:")
-st.subheader("Em seguida pague a pequena taxa para cobrir os custos de manutenção do site.")
-"ATENÇÃO: O pagamento será confirmado comparando o nome inserido no campo do proprietário da conta e o nome informado pelo depósito no banco."
+# st.subheader("Em seguida pague a pequena taxa para cobrir os custos de manutenção do site.")
+# "ATENÇÃO: O pagamento será confirmado comparando o nome inserido no campo do proprietário da conta e o nome informado pelo depósito no banco."
 
 # Input dados do usuário
 form = st.form("Dados", True)
@@ -75,7 +79,7 @@ with form:
     email = st.text_input("E-mail")
     message = st.text_area("Pedido de Oração (máximo de 300 caracteres)", max_chars=300)
 #Botão de enviar
-submit = form.form_submit_button("Faça o PIX com o código abaixo e clique aqui para ENVIAR")
+submit = form.form_submit_button("ENVIAR")
 imagem_papel = False
 if submit:
     # Verificação de entrada do usuário antes de salvar
@@ -95,7 +99,7 @@ if submit:
         # Insere todos os dados na planilha
         conn.update(worksheet="dados", data=dados_atualizados)
         # Mensagem de sucesso
-        st.success("Dados gravados com sucesso! Seu nome será colocado no Muro das Lamentações após confirmação do pagamento e em seguida receberás um e-mail de confirmação.")
+        st.success("Dados gravados com sucesso! Seu nome será colocado no Muro das Lamentações e em seguida receberás um e-mail de confirmação.")
         imagem_papel = True
         # Após enviar os dados, limpar os campos
         st.session_state.pagador = ""
@@ -106,10 +110,11 @@ if submit:
         st.error("Por favor, preencha todos os campos antes de enviar.")
 
 # Chave PIX
-st.subheader('''Chave PIX:
-             '00020126780014br.gov.bcb.pix0136f5217104-8f82-4c69-9481-86875b09904b0216Meu Nome No Muro52040000530398654047.005802BR5913Lucas Schlupp6008Brasilia62090505mc7sw63048BF0' ''')
+st.subheader('''Contribua com o nosso Ministério utilizando a Chave PIX (qualuqer valor):
+             '00020126830014br.gov.bcb.pix0136f5217104-8f82-4c69-9481-86875b09904b0221Muro das Lamentacoes 5204000053039865802BR5913Lucas Schlupp6008Brasilia62090505hiafw630428B9' ''')
 # Imagem do QR Code
-st.image("qr.jpg", width=200)
+st.image("qrsemvalor.jpg", width=200)
  # Imagem de sucesso
 if imagem_papel == True:
-    st.image('papel.jpg')
+    st.image('papel.jpg', width=400)
+    
