@@ -110,7 +110,7 @@ if submit:
         st.error("Por favor, preencha todos os campos antes de enviar.")
 
 # Chave PIX
-st.subheader('''Contribua com o nosso Ministério utilizando a Chave PIX (qualuqer valor):
+st.subheader('''Contribua com o nosso Ministério utilizando a Chave PIX (qualquer valor):
              '00020126830014br.gov.bcb.pix0136f5217104-8f82-4c69-9481-86875b09904b0221Muro das Lamentacoes 5204000053039865802BR5913Lucas Schlupp6008Brasilia62090505hiafw630428B9' ''')
 # Imagem do QR Code
 st.image("qrsemvalor.jpg", width=200)
